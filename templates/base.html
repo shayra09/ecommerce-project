@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>E-commerce</title>
+    <link href="{% static 'css/all.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+
+
+</head>
+<style>
+    .bg-colorblack {
+        background: #212529 !important;
+    }
+
+    .bg-colororange {
+        background: #ff4500 !important;
+    }
+
+    .txt-colorgreen {
+        color: #31a650 !important;
+        ;
+    }
+
+    .txt-colororange {
+        color: #ff4500 !important;
+    }
+
+    .t1 a {
+        text-decoration: none;
+        color: white;
+
+    }
+
+    .t1 {
+        font-size: 12px;
+    }
+
+    .ico {
+
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        line-height: 20px;
+        transition: all .5s;
+        border-radius: 2px;
+    }
+
+    .ico:hover {
+
+        color: #f7931e;
+        transform: rotate(360deg);
+        transition: all .5s;
+    }
+
+    #menu {
+        background: transparent !important;
+    }
+
+    #menu ul li a {
+        color: white;
+    }
+
+    .product:hover {
+        transform: scale(1.06);
+        color: #f7931e;
+    }
+
+    .offers:hover {
+        transform: translatey(-10px);
+    }
+
+    .tran {
+        transition: all .3s;
+    }
+
+    .ufooter {
+        min-height: 300px;
+        background: #212529;
+    }
+
+    .fico:hover {
+
+        color: #f7931e;
+        transform: rotate(360deg);
+        transition: all .5s;
+    }
+
+    .bfooter {
+        background: #212529;
+        margin-top: 1px;
+        text-align: center;
+    }
+
+    .u2 a {
+        text-decoration: none;
+        color: #bbbbbb;
+    }
+
+    .u2 a:hover {
+        color: orange;
+    }
+
+    .white {
+        color: #bbbbbb;
+    }
+
+    .bg-colorblack {
+        background: #212529;
+    }
+
+    .icon:hover {
+        transform: rotate(360deg);
+        color: #f7931e;
+        transition: all .6s;
+    }
+
+    .brand:hover {
+        transform: scale(1.2);
+
+        transition: all .4s;
+
+    }
+
+    .brand {
+        transition: all .4s;
+    }
+
+    .orange:hover {
+        color: #d7e057;
+    }
+
+    .man ul li :hover {
+        background: green;
+        transition: .2s;
+    }
+
+    .bfooter a {
+        color: white;
+        text-decoration: none;
+    }
+
+    /* css */
+    body{
+    background:#f5f5f5;
+    font-family:'Poppins',sans-serif;
+}
+
+.navbar .nav-link{
+    color:#fff !important;
+    font-weight:500;
+    transition:.3s;
+}
+
+.navbar .nav-link:hover{
+    color:#ffc107 !important;
+}
+
+.btn-warning{
+    background:#ff6b00;
+    border:none;
+}
+
+.btn-warning:hover{
+    background:#ff8f00;
+}
+
+.form-control{
+    border:1px solid #ddd;
+}
+
+.shadow-sm{
+    box-shadow:0 2px 10px rgba(0,0,0,.08)!important;
+}
+
+.badge{
+    font-size:11px;
+}
+
+.navbar{
+    padding:12px 0;
+}
+</style>
+
+
+
+<body>
+<!-- ================= TOP BAR ================= -->
+<div class="container-fluid bg-dark text-white py-2 small">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-4 text-center text-lg-start">
+                <i class="fa-solid fa-phone text-warning"></i> +91 852147635
+                &nbsp; | &nbsp;
+                <i class="fa-solid fa-envelope text-warning"></i>
+                abc123@gmail.com
+            </div>
+
+            <div class="col-lg-4 text-center">
+                <span>
+                    🚚 Free Shipping on Orders Above ₹999
+                </span>
+            </div>
+
+            <div class="col-lg-4 text-center text-lg-end">
+
+                <a href="/about/" class="text-white text-decoration-none me-3">
+                    About
+                </a>
+
+                <a href="/contact/" class="text-white text-decoration-none me-3">
+                    Contact
+                </a>
+
+                <a href="/faqs/" class="text-white text-decoration-none">
+                    FAQ
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================= MAIN HEADER ================= -->
+
+<div class="container-fluid bg-white shadow-sm">
+
+    <div class="container">
+
+        <div class="row align-items-center py-3">
+
+            <!-- Logo -->
+
+            <div class="col-lg-3 text-center text-lg-start">
+
+                <a href="/home/" class="text-decoration-none">
+
+                    <h2 class="fw-bold m-0">
+
+                        <i class="fa-solid fa-cart-shopping text-warning"></i>
+
+                        Shoppy<span class="text-dark">Mart</span>
+
+                    </h2>
+
+                </a>
+
+            </div>
+
+            <!-- Search -->
+
+            <div class="col-lg-5 my-3 my-lg-0">
+
+  <form action="/product/" method="GET">
+
+    {% if cid %}
+        <input type="hidden" name="pid" value="{{cid}}">
+    {% endif %}
+
+    <div class="input-group">
+
+        <input
+            type="text"
+            name="search"
+            value="{{search}}"
+            class="form-control"
+            placeholder="Search products...">
+
+        <button class="btn btn-warning" type="submit">
+            <i class="fa fa-search"></i>
+        </button>
+
+    </div>
+
+</form>
+
+            </div>
+
+            <!-- Right Side -->
+
+            <div class="col-lg-4">
+
+                <div class="d-flex justify-content-center justify-content-lg-end align-items-center gap-3">
+
+                    {% if request.session.user %}
+
+                    <a href="/profile/" class="text-dark text-decoration-none">
+
+                        <img src="../{{request.session.userpic}}"
+                             class="rounded-circle border"
+                             width="42"
+                             height="42">
+
+                        <span class="ms-2 fw-semibold">
+                            {{request.session.username}}
+                        </span>
+
+                    </a>
+
+                    {% else %}
+
+                    <a href="/login/" class="btn btn-outline-dark">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        Login
+
+                    </a>
+
+                    {% endif %}
+
+                    <a href="/cartitem/" class="btn btn-warning position-relative">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        Cart
+
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+
+                            {% if request.session.user %}
+                            {{request.session.cartitems}}
+                            {% else %}
+                            0
+                            {% endif %}
+
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+
+    <div class="container">
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainMenu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainMenu">
+
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="/home/">
+                        <i class="fa fa-home"></i> Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="/product/">
+                        <i class="fa fa-box"></i> Products
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="/about/">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="/contact/">
+                        Contact
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="/faqs/">
+                        FAQs
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="#">
+                        Blogs
+                    </a>
+                </li>
+
+                {% if request.session.user %}
+
+                <li class="nav-item">
+
+                    <a class="nav-link px-3" href="/history/">
+
+                        Orders
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link px-3" href="/logout/">
+
+                        Logout
+
+                    </a>
+
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+
+                    <a class="nav-link px-3" href="/register/">
+
+                        Register
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link px-3" href="/login/">
+
+                        Login
+
+                    </a>
+
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+        <div class="row">
+            <div class="col-sm-12 childpage" style="min-height:500px;">
+                {% block childpage %}
+                {% endblock %}
+            </div>
+        </div>
+        <!--startfooter-->
+
+        <div class="row ufooter mt-3">
+
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="row u1 py-4 border-bottom border-light text-light">
+
+                    <div class="col-sm-6 ">
+                        <b class=" fs-4 ">Subscribe To Our Platform <i class="fa-solid fa-gift brand "></i></b><br />
+                        <span class="white orange">Subscribe to our Shopping platform and get 20% off on your first
+                            purchase</span>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5 pt-3">
+                        <div class="input-group   rounded text-center">
+                            <input type="text" placeholder="Please enter your email here....."
+                                class="form-control text-center " />
+                            <button class="input-group-text text-bg-dark ">Subscribe</button>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="row u2 text-light">
+                    <div class="col-sm-3  pt-4">
+                        <span class="fs-4"> <i style="font-family:Forte;">Fashion</i><b class="txt-colororange">MART <i
+                                    class="fa-solid fa-bag-shopping brand "></i></b> </span>
+                        <br /><span class="orange">---------------------------</span><br />
+
+                        <img src="{% static 'images/ufooter/paypal.png' %}" style="height:40px;"
+                            class="img-fluid mt-2" />
+
+
+                    </div>
+                    <div class="col-sm-3 ps-5  py-4">
+                        <!-- footer first column link-->
+                        <div class="row ">
+                            <div class="col-sm-12">
+                                <b class="fs-5">Useful Links</b>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-sm-12">
+                                <a href="#">About</a>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-12">
+                                <a href="#">Blogs</a>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-12">
+                                <a href="#">Contact</a>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-12">
+                                <a href="#">Offer's</a>
+                            </div>
+                        </div>
+                        <div class="row  mt-2">
+                            <div class="col-sm-12">
+                                <a href="#">Affiliate Program's</a>
+                            </div>
+                        </div>
+                        <!--footer one column link-->
+                    </div>
+                    <div class="col-sm-3  ps-5  py-4">
+                        <!-- footer second column links-->
+                        <div class="row ">
+                            <div class="col-sm-12 ">
+                                <b class="fs-5">My Account</b>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-sm-12">
+                                <a href="#">Sign In</a>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-12">
+                                <a href="#">View Cart</a>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-12">
+                                <a href="#">Track my Order</a>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-sm-12">
+                                <a href="#">Privacy Policy</a>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-12">
+                                <a href="#">FAQ's</a>
+                            </div>
+                        </div>
+                        <!-- footer second column links end-->
+                    </div>
+                    <div class="col-sm-3  py-4"><!--start address-->
+                        <div class="row ">
+                            <div class="col-sm-12 pb-2">
+                                <b class="fs-5 ">Registered Address</b>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-sm-12 "><i class="fa-solid fa-house icon"></i>
+                                <span class="white ps-2">Munsipulia, Lucknow
+                                    Uttar Pradesh </span>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-12 ">
+                                <i class="fa-solid fa-phone icon"></i> <span class="white">+91 8952369874</span>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-sm-12 ">
+                                <i class="fa-solid fa-envelope icon"></i> <span class="white">abc123@gmail.com</span>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="row u3 p-2">
+                    <div class="col-sm-3 text-center mx-auto py-1 mb-2 text-light ">
+                        <i class="fab fa-facebook-f me-2 fico p-1 border border-light rounded"></i>
+                        <i class="fab fa-twitter me-2 p-1 fico  border border-light rounded"></i>
+                        <i class="fab fa-instagram me-2  fico p-1 border border-light rounded"></i>
+                        <i class="fab fa-youtube me-2  p-1 fico border border-light rounded"></i>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-sm-2"></div>
+
+
+
+
+
+            <!--end footer-->
+        </div>
+        <div class="row bfooter py-3">
+            <div class="row">
+                <div class="col-sm-6 text-light">
+                    <a href="/portfolio/">
+                        Developed By : shayra@gmail.com
+                    </a>
+                </div>
+
+                <div class="col-sm-6 text-light">
+                    <a href="https://www.techpile.in"> &copy Copyright To : dummy text</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+
+    <script>
+        var i = 0
+        function cplus() {
+            i++;
+            document.getElementById("carttxt").value = i
+
+        }
+        function cminus() {
+            if (i > 0) {
+                i--;
+                document.getElementById("carttxt").value = i
+            }
+        }
+
+        var a = 0
+        function cplus1() {
+            a++;
+            document.getElementById("carttxt1").value = a
+
+        }
+        function cminus1() {
+            if (a > 0) {
+                a--;
+                document.getElementById("carttxt1").value = a
+            }
+        }
+        var b = 0
+        function cplus2() {
+            b++;
+            document.getElementById("carttxt2").value = b
+
+        }
+        function cminus2() {
+            if (b > 0) {
+                b--;
+                document.getElementById("carttxt2").value = b
+            }
+        }
+        var c = 0
+        function cplus3() {
+            c++;
+            document.getElementById("carttxt3").value = c
+
+        }
+        function cminus3() {
+            if (c > 0) {
+                c--;
+                document.getElementById("carttxt3").value = c
+            }
+        }
+    </script>
+</body>
+
+</html>

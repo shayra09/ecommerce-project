@@ -1,0 +1,411 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block childpage %}
+<style>
+    .textcolor:hover {
+        color: #f7931e !important;
+    }
+
+    /* CARD FIX START */
+    .card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-img-top {
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .maxdiscount .col-sm-3 {
+        display: flex;
+    }
+
+    /* CARD FIX END */
+
+    .ic {
+        border-radius: 50%;
+        border: 1px solid black;
+        padding: 15px;
+    }
+
+    .hero-card {
+        transition: .4s;
+    }
+
+    .hero-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .scroll-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .product-scroll-card {
+        min-width: 260px;
+        max-width: 260px;
+    }
+
+    .category-card img {
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .offer-banner {
+        background: linear-gradient(45deg, #ff9800, #ff5722);
+        color: white;
+        padding: 60px 20px;
+        border-radius: 15px;
+    }
+
+    .review-card {
+        border: none;
+        box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+    }
+
+    .stats {
+        background: #111;
+        color: white;
+        padding: 50px 0;
+    }
+
+    .sliderimg {
+        height: 550px;
+        object-fit: cover;
+        filter: brightness(85%);
+    }
+</style>
+
+<!-- ================= SLIDER START ================= -->
+<div class="row slider">
+    <div class="col-sm-12 p-0">
+
+        <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel"
+            data-bs-interval="2000">
+
+            <div class="carousel-inner">
+                {% for i in sliderdata %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="../{{i.slider_picture}}" style="max-height:500px;" class="d-block w-100">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{i.title}}</h5>
+                        <p>{{i.description}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+    </div>
+</div>
+<!-- ================= SLIDER END ================= -->
+
+
+<!-- ================= TODAY DEALS ================= -->
+<div class="row mb-2 mt-4">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-7">
+        <p class="fs-3">Today Deals <b class="txt-colororange">Best Offer's</b></p>
+        <hr />
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-4">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+
+        <div class="row pt-3">
+            {% for i in productdata %}
+            <div class="col-sm-3 mb-4">
+
+                <div class="card shadow rounded w-100 position-relative">
+
+                    <!-- Discount Badge -->
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
+                        ₹ {{i.discount}}
+                    </span>
+
+                    <img src="../{{i.product_image}}" class="card-img-top">
+
+                    <div class="card-body">
+
+                        <div>
+                            <h5 class="card-title">{{i.product_name}}</h5>
+                            <p class="mb-2">₹ {{i.price}} | {{i.quantity}}</p>
+                        </div>
+
+                        <!-- CART FORM -->
+                        <form action="/cart/">
+                            <input type="hidden" name="pid" value="{{i.id}}" />
+                            <input type="hidden" name="pimage" value="{{i.product_image}}" />
+                            <input type="hidden" name="pprice" value="{{i.price}}" />
+                            <input type="hidden" name="pname" value="{{i.product_name}}" />
+                            <input type="hidden" name="pw" value="{{i.quantity}}" />
+
+                            <div class="input-group mb-2">
+                                <button type="button" class="input-group-text"
+                                    onclick="changeQty({{i.id}},-1,{{i.quantity}})">-</button>
+                                <input type="text" value="0" name="pquantity" readonly class="form-control text-center"
+                                    id="carttxt{{i.id}}" />
+                                <button type="button" class="input-group-text"
+                                    onclick="changeQty({{i.id}},1,{{i.quantity}})">+</button>
+                            </div>
+
+                            <input type="submit" value="Add" class="btn btn-warning w-100 text-light" />
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            {% endfor %}
+            <!-- Quantity Script -->
+            <script>
+                let qty = {};
+
+                function changeQty(id, change, stock) {
+
+                    qty[id] = qty[id] || 0;
+
+                    if (change > 0 && qty[id] >= stock) {
+                        alert("Only " + stock + " items available in stock");
+                        return;
+                    }
+
+                    qty[id] += change;
+
+                    if (qty[id] < 0)
+                        qty[id] = 0;
+
+                    document.getElementById("carttxt" + id).value = qty[id];
+                }
+            </script>
+        </div>
+
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+<!-- ================= END TODAY DEALS ================= -->
+<div class="container my-5">
+
+    <h2 class="text-center mb-4">
+        Shop By Category
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+            <div class="card category-card hero-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>Mobiles</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card category-card hero-card">
+                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>Fashion</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card category-card hero-card">
+                <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>Electronics</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card category-card hero-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>Accessories</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="container my-5">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Trending Products</h2>
+
+        <div>
+            <button class="btn btn-dark" onclick="leftScroll()">❮</button>
+            <button class="btn btn-dark" onclick="rightScroll()">❯</button>
+        </div>
+    </div>
+
+    <div class="scroll-container mt-4" id="scrollProduct">
+
+        {% for i in productdata %}
+
+        <div class="card product-scroll-card">
+
+            <img src="../{{i.product_image}}" class="card-img-top">
+
+            <div class="card-body">
+
+                <h6>{{i.product_name}}</h6>
+
+                <p>
+                    ₹ {{i.price}}
+                </p>
+
+                <a href="/productdetails/?id={{i.id}}" class="btn btn-warning w-100">
+                    View
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+<div class="container my-5">
+
+    <div class="offer-banner text-center">
+
+        <h1>
+            🔥 Mega Sale 50% OFF
+        </h1>
+
+        <p>
+            Get exciting discounts on all categories
+        </p>
+
+        <a href="#" class="btn btn-light">
+            Shop Now
+        </a>
+
+    </div>
+
+</div>
+<div class="container my-5">
+
+    <h2 class="text-center mb-4">
+        Customer Reviews
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card review-card">
+                <div class="card-body">
+                    ⭐⭐⭐⭐⭐
+                    <p>
+                        Amazing products and fast delivery.
+                    </p>
+                    <b>Rahul Kumar</b>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card review-card">
+                <div class="card-body">
+                    ⭐⭐⭐⭐⭐
+                    <p>
+                        Best shopping experience.
+                    </p>
+                    <b>Aman Singh</b>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card review-card">
+                <div class="card-body">
+                    ⭐⭐⭐⭐⭐
+                    <p>
+                        Affordable price and quality.
+                    </p>
+                    <b>Priya Sharma</b>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="container-fluid stats">
+
+    <div class="row text-center">
+
+        <div class="col-md-3">
+            <h2>5000+</h2>
+            <p>Customers</p>
+        </div>
+
+        <div class="col-md-3">
+            <h2>1200+</h2>
+            <p>Products</p>
+        </div>
+
+        <div class="col-md-3">
+            <h2>150+</h2>
+            <p>Brands</p>
+        </div>
+
+        <div class="col-md-3">
+            <h2>99%</h2>
+            <p>Happy Clients</p>
+        </div>
+
+    </div>
+
+</div>
+<!-- ***************** -->
+<script>
+
+    function leftScroll() {
+        document.getElementById("scrollProduct").scrollLeft -= 300;
+    }
+
+    function rightScroll() {
+        document.getElementById("scrollProduct").scrollLeft += 300;
+    }
+
+</script>
+{% endblock %}

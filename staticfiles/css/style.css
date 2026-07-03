@@ -1,0 +1,45 @@
+.hero-card{
+transition:.4s;
+}
+.hero-card:hover{
+transform:translateY(-8px);
+}
+
+.scroll-container{
+display:flex;
+overflow-x:auto;
+scroll-behavior:smooth;
+gap:20px;
+padding:10px;
+}
+.scroll-container::-webkit-scrollbar{
+display:none;
+}
+
+.product-scroll-card{
+min-width:260px;
+max-width:260px;
+}
+
+.category-card img{
+height:180px;
+object-fit:cover;
+}
+
+.offer-banner{
+background:linear-gradient(45deg,#ff9800,#ff5722);
+color:white;
+padding:60px 20px;
+border-radius:15px;
+}
+
+.review-card{
+border:none;
+box-shadow:0 0 15px rgba(0,0,0,.1);
+}
+
+.stats{
+background:#111;
+color:white;
+padding:50px 0;
+}

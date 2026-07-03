@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block childpage %}
+
+<div class="container">
+
+<div class="row heading text-center my-3">
+    <div class="col-sm-5 mx-auto">
+    <p class="fs-2 p-0 m-0">About <b class="txt-colororange">Us </b></p>
+        <i>This is a dummy text this is dummy text just make for some showcase</i>
+    </div>
+</div>
+    <hr/> 
+    <!--start about us-->
+    <div class="row my-4">
+        <div class="col-sm-6">
+            <img src="{% static 'images/product/about2.jpg' %}" class="mt-2 img-fluid w-100" />
+        </div>
+        <div class="col-sm-6 px-2 py-1 text-justify fs-5">
+            <p>The Shoppy Mart should be as up-to-date as the fashion
+                industry is.
+                The seasons are indispensable and have been the norm in the fashion trade for years as the time to set new trends and collections.
+                The spring, summer, autumn, and winter carousel turns constantly.
+                So, the texts in the online shop must also be kept in vogue.
+                Be prepared for this in good time before the start of the season.
+                For operators of a fashion shop,
+                it is also advisable to combine existing goods with new clothes.
+                In this way, they automatically point out other items of clothing that match the respective product and encourage users to keep looking around in the e-shop.
+                Basics, for example, never go out of style: The little black dress, white shirt,
+                or white blouse are almost a staple in the wardrobe of men and women.</p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

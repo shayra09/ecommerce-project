@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block childpage %}
+
+<div class="container py-5">
+
+```
+<div class="row">
+
+    <!-- Product Image -->
+    <div class="col-md-5">
+
+        <div class="card border-0 shadow">
+            <img src="../{{pdata.product_image}}"
+                 class="img-fluid rounded"
+                 style="height:500px;object-fit:cover;">
+        </div>
+
+    </div>
+
+    <!-- Product Details -->
+    <div class="col-md-7">
+
+        <h2 class="fw-bold">
+            {{pdata.product_name}}
+        </h2>
+
+        <div class="text-warning mb-2 fs-5">
+            ★★★★★
+        </div>
+
+        <h3 class="text-success">
+            ₹ {{pdata.price}}
+        </h3>
+
+        <h6 class="text-muted">
+            Discount : ₹ {{pdata.discount}}
+        </h6>
+
+        <h6>
+            Size / Quantity :
+            {{pdata.quantity}}
+        </h6>
+
+        <hr>
+
+        <h5>Product Description</h5>
+
+        <p>
+            {% if pdata.description %}
+                {{pdata.description}}
+            {% else %}
+                Premium quality fashion wear designed for comfort and style. Perfect for casual outings, office wear, college, parties and everyday use. Soft fabric, modern fitting and durable stitching ensure a comfortable experience throughout the day.
+            {% endif %}
+        </p>
+
+        <form action="/productcart/">
+
+            <input type="hidden" name="pid" value="{{pdata.id}}">
+            <input type="hidden" name="pimage" value="{{pdata.product_image}}">
+            <input type="hidden" name="pprice" value="{{pdata.price}}">
+            <input type="hidden" name="pname" value="{{pdata.product_name}}">
+            <input type="hidden" name="pw" value="{{pdata.quantity}}">
+
+            <div class="row mb-3">
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Quantity
+                    </label>
+
+                    <input type="number"
+                           name="pquantity"
+                           value="1"
+                           min="1"
+                           class="form-control">
+
+                </div>
+
+            </div>
+
+            <button class="btn btn-warning text-light px-4">
+                <i class="fas fa-cart-plus"></i>
+                Add To Cart
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- Features -->
+<div class="row mt-5">
+
+    <div class="col-md-4 text-center">
+        <div class="card shadow border-0 p-3">
+            <h4>🚚</h4>
+            <h6>Free Delivery</h6>
+        </div>
+    </div>
+
+    <div class="col-md-4 text-center">
+        <div class="card shadow border-0 p-3">
+            <h4>🔄</h4>
+            <h6>Easy Returns</h6>
+        </div>
+    </div>
+
+    <div class="col-md-4 text-center">
+        <div class="card shadow border-0 p-3">
+            <h4>💯</h4>
+            <h6>Premium Quality</h6>
+        </div>
+    </div>
+
+</div>
+```
+
+</div>
+
+{% endblock %}

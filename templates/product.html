@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block childpage %}
+<!--start heading-->
+<style>
+    .all_product {
+        color: green;
+        padding: 0 10px;
+
+    }
+
+    .all_product:hover {
+        background-color: green;
+        color: white;
+        border-radius: 5px;
+
+    }
+
+    .all_product {
+        transition: all 1s;
+    }
+
+    /* css */
+    .product-card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: .3s;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, .15);
+    }
+
+    .product-img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+    }
+
+    .card-title {
+        height: 50px;
+        overflow: hidden;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .card-text {
+        min-height: 30px;
+    }
+</style>
+
+<div class="row mb-2 ">
+
+    <div class="col-sm-4 mx-auto text-center">
+        <p class="fs-3 m-0 p-0 ">Our <b class="txt-colororange">Product's <i class="fas fa-box"></i></b></p>
+        <hr />
+        <i>We are providing best primary platform for detailed product descriptions,images and purchase option. </i>
+        <hr />
+    </div>
+</div>
+<!--end heading-->
+
+<div class="row">
+    <div class="col-sm-2">
+        <ul class="list-group">
+            <li class="list-group-item bg-colorblack text-light fw-bold fs-4">
+                Featured products <i class="fas fa-cart-shopping"></i>
+            </li>
+            <li class="list-group-item  fs-5">
+
+                <a href="/product/" class="all_product shadow" style="text-decoration: none;">All Product</a>
+
+            </li>
+
+
+            {% for x in categorydata %}
+
+            <li class="list-group-item fs-5">
+
+                <img src="../{{x.category_picture}}" class="img-thumbnail" style="height:50px;" />
+
+                <a href="/product/?pid={{x.id}}{% if search %}&search={{search}}{% endif %}"
+                    class="text-dark text-decoration-none">
+                    {{x.product_category}}
+                </a>
+
+            </li>
+
+            {% endfor %}
+
+
+
+
+        </ul>
+    </div>
+    <div class="col-sm-10 d-block">
+        <div class="row">
+            {% for i in productdata %}
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex">
+                <!--start product-->
+                <div class="card h-100 w-100 border-0 shadow product-card">
+
+                    <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"> <i class="fa-solid fa-indian-rupee-sign"></i> {{i.discount}}  -->
+                    <span class="visually-hidden">unread messages</span>
+
+
+                    <img src="../{{i.product_image}}" class="card-img-top product-img" alt="{{i.product_name}}">
+                    <div class="card-body d-flex flex-column">
+
+                        <h5 class="card-title">{{i.product_name}}</h5>
+                        <p class="card-text p-0 m-0">
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            <span>{{i.price}}</span> | {{i.quantity}}
+                            </p>
+                            <!--cart count-->
+                        <div class="mt-auto">
+                            <form action="/productcart/">
+                                <input type="hidden" name="pid" value="{{i.id}}" />
+                                <input type="hidden" name="pimage" value="{{i.product_image}}" />
+                                <input type="hidden" name="pprice" value="{{i.price}}" />
+                                <input type="hidden" name="pname" value="{{i.product_name}}" />
+                                <input type="hidden" name="pw" value="{{i.quantity}}" />
+                                <div class="input-group">
+                                    <button class="input-group-text fs-4 " type="button"
+                                        onclick="cminus{{i.id}}()">-</button>
+                                    <input type="text" value="0" name="pquantity" readonly
+                                        class="form-control text-center " id="carttxt{{i.id}}" />
+                                    <button class="input-group-text fs-4" type="button"
+                                        onclick="cplus{{i.id}}()">+</button>
+                                </div>
+                                <!-- end cart count-->
+                                <input type="submit" value="Add" class="btn bg-colororange text-light" />
+                                <a href="/productdetails/?id={{i.id}}" class="btn btn-outline-dark mt-2 w-100">
+                                    View Details
+                                </a>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--end product-->
+            </div>
+    <script>
+    var x{{i.id}} = 0;
+
+    function cplus{{i.id}}() {
+
+        var stock = {{i.quantity}};
+
+        if (x{{i.id}} >= stock) {
+            alert("Only " + stock + " items available in stock");
+            return;
+        }
+
+        x{{i.id}}++;
+
+        document.getElementById("carttxt{{i.id}}").value = x{{i.id}};
+    }
+
+    function cminus{{i.id}}() {
+
+        if (x{{i.id}} > 0) {
+
+            x{{i.id}}--;
+
+            document.getElementById("carttxt{{i.id}}").value = x{{i.id}};
+        }
+
+    }
+</script>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
