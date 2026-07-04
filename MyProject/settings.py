@@ -27,6 +27,12 @@ SECRET_KEY = os.environ.get(
     "django-insecure-&$g%49b&&-(xzb9#t#s8-vg%$-6n6@a@2r!uyx6&*r*g0+m-=n"
 )
 
+
+
+
+import os
+
+
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 DATABASES = {
