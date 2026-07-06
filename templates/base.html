@@ -79,13 +79,30 @@
     .ufooter {
         min-height: 300px;
         background: #212529;
+        background: linear-gradient(135deg, #111, #1f1f1f);
     }
+
 
     .fico:hover {
 
         color: #f7931e;
         transform: rotate(360deg);
         transition: all .5s;
+    }
+
+    .fico {
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        border-radius: 50%;
+        transition: .4s;
+    }
+
+    .fico:hover {
+        background: #ff9800;
+        color: #fff;
+        transform: translateY(-5px);
     }
 
     .bfooter {
@@ -96,11 +113,14 @@
 
     .u2 a {
         text-decoration: none;
-        color: #bbbbbb;
+        display: block;
+        padding: 6px 0;
+        transition: .3s;
     }
 
     .u2 a:hover {
-        color: orange;
+        color: #ff9800;
+        padding-left: 8px;
     }
 
     .white {
@@ -143,489 +163,501 @@
     }
 
     /* css */
-    body{
-    background:#f5f5f5;
-    font-family:'Poppins',sans-serif;
-}
+    body {
+        background: #f5f5f5;
+        font-family: 'Poppins', sans-serif;
+    }
 
-.navbar .nav-link{
-    color:#fff !important;
-    font-weight:500;
-    transition:.3s;
-}
+    .navbar .nav-link {
+        color: #fff !important;
+        font-weight: 500;
+        transition: .3s;
+    }
 
-.navbar .nav-link:hover{
-    color:#ffc107 !important;
-}
+    .navbar .nav-link:hover {
+        color: #ffc107 !important;
+    }
 
-.btn-warning{
-    background:#ff6b00;
-    border:none;
-}
+    .btn-warning {
+        background: #ff6b00;
+        border: none;
+    }
 
-.btn-warning:hover{
-    background:#ff8f00;
-}
+    .btn-warning:hover {
+        background: #ff8f00;
+    }
 
-.form-control{
-    border:1px solid #ddd;
-}
+    .form-control {
+        border: 1px solid #ddd;
+    }
 
-.shadow-sm{
-    box-shadow:0 2px 10px rgba(0,0,0,.08)!important;
-}
+    .shadow-sm {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, .08) !important;
+    }
 
-.badge{
-    font-size:11px;
-}
+    .badge {
+        font-size: 11px;
+    }
 
-.navbar{
-    padding:12px 0;
-}
+    .navbar {
+        padding: 12px 0;
+    }
+
+    /* footer */
+    .ufooter .form-control {
+        height: 50px;
+        border-radius: 30px 0 0 30px;
+        border: none;
+    }
+
+    .ufooter .input-group-text {
+        border-radius: 0 30px 30px 0;
+        background: #ff6b00;
+        color: white;
+        border: none;
+        padding: 0 25px;
+    }
+
+    .ufooter .input-group-text:hover {
+        background: #ff8c00;
+    }
 </style>
 
 
 
 <body>
-<!-- ================= TOP BAR ================= -->
-<div class="container-fluid bg-dark text-white py-2 small">
-    <div class="container">
-        <div class="row align-items-center">
+    <!-- ================= TOP BAR ================= -->
+    <div class="container-fluid bg-dark text-white py-2 small">
+        <div class="container">
+            <div class="row align-items-center">
 
-            <div class="col-lg-4 text-center text-lg-start">
-                <i class="fa-solid fa-phone text-warning"></i> +91 852147635
-                &nbsp; | &nbsp;
-                <i class="fa-solid fa-envelope text-warning"></i>
-                abc123@gmail.com
+                <div class="col-lg-4 text-center text-lg-start">
+                    <i class="fa-solid fa-phone text-warning"></i> +91 852147635
+                    &nbsp; | &nbsp;
+                    <i class="fa-solid fa-envelope text-warning"></i>
+                    shayra690@gmail.com
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <span>
+                        🚚 Free Shipping on Orders Above ₹999
+                    </span>
+                </div>
+
+                <div class="col-lg-4 text-center text-lg-end">
+
+                    <a href="/about/" class="text-white text-decoration-none me-3">
+                        About
+                    </a>
+
+                    <a href="/contact/" class="text-white text-decoration-none me-3">
+                        Contact
+                    </a>
+
+                    <a href="/faqs/" class="text-white text-decoration-none">
+                        FAQ
+                    </a>
+
+                </div>
+
             </div>
+        </div>
+    </div>
 
-            <div class="col-lg-4 text-center">
-                <span>
-                    🚚 Free Shipping on Orders Above ₹999
-                </span>
-            </div>
+    <!-- ================= MAIN HEADER ================= -->
 
-            <div class="col-lg-4 text-center text-lg-end">
+    <div class="container-fluid bg-white shadow-sm">
 
-                <a href="/about/" class="text-white text-decoration-none me-3">
-                    About
-                </a>
+        <div class="container">
 
-                <a href="/contact/" class="text-white text-decoration-none me-3">
-                    Contact
-                </a>
+            <div class="row align-items-center py-3">
 
-                <a href="/faqs/" class="text-white text-decoration-none">
-                    FAQ
-                </a>
+                <!-- Logo -->
+
+                <div class="col-lg-3 text-center text-lg-start">
+
+                    <a href="/home/" class="text-decoration-none">
+
+                        <h2 class="fw-bold m-0">
+
+                            <i class="fa-solid fa-cart-shopping text-warning"></i>
+
+                            Shoppy<span class="text-dark">Mart</span>
+
+                        </h2>
+
+                    </a>
+
+                </div>
+
+                <!-- Search -->
+
+                <div class="col-lg-5 my-3 my-lg-0">
+
+                    <form action="/product/" method="GET">
+
+                        {% if cid %}
+                        <input type="hidden" name="pid" value="{{cid}}">
+                        {% endif %}
+
+                        <div class="input-group">
+
+                            <input type="text" name="search" value="{{search}}" class="form-control"
+                                placeholder="Search products...">
+
+                            <button class="btn btn-warning" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <!-- Right Side -->
+
+                <div class="col-lg-4">
+
+                    <div class="d-flex justify-content-center justify-content-lg-end align-items-center gap-3">
+
+                        {% if request.session.user %}
+
+                        <a href="/profile/" class="text-dark text-decoration-none">
+
+                            <img src="../{{request.session.userpic}}" class="rounded-circle border" width="42"
+                                height="42">
+
+                            <span class="ms-2 fw-semibold">
+                                {{request.session.username}}
+                            </span>
+
+                        </a>
+
+                        {% else %}
+
+                        <a href="/login/" class="btn btn-outline-dark">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            Login
+
+                        </a>
+
+                        {% endif %}
+
+                        <a href="/cartitem/" class="btn btn-warning position-relative">
+
+                            <i class="fa-solid fa-cart-shopping"></i>
+
+                            Cart
+
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+
+                                {% if request.session.user %}
+                                {{request.session.cartitems}}
+                                {% else %}
+                                0
+                                {% endif %}
+
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
-    </div>
-</div>
-
-<!-- ================= MAIN HEADER ================= -->
-
-<div class="container-fluid bg-white shadow-sm">
-
-    <div class="container">
-
-        <div class="row align-items-center py-3">
-
-            <!-- Logo -->
-
-            <div class="col-lg-3 text-center text-lg-start">
-
-                <a href="/home/" class="text-decoration-none">
-
-                    <h2 class="fw-bold m-0">
-
-                        <i class="fa-solid fa-cart-shopping text-warning"></i>
-
-                        Shoppy<span class="text-dark">Mart</span>
-
-                    </h2>
-
-                </a>
-
-            </div>
-
-            <!-- Search -->
-
-            <div class="col-lg-5 my-3 my-lg-0">
-
-  <form action="/product/" method="GET">
-
-    {% if cid %}
-        <input type="hidden" name="pid" value="{{cid}}">
-    {% endif %}
-
-    <div class="input-group">
-
-        <input
-            type="text"
-            name="search"
-            value="{{search}}"
-            class="form-control"
-            placeholder="Search products...">
-
-        <button class="btn btn-warning" type="submit">
-            <i class="fa fa-search"></i>
-        </button>
 
     </div>
 
-</form>
+    <!-- ================= NAVBAR ================= -->
 
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
 
-            <!-- Right Side -->
+        <div class="container">
 
-            <div class="col-lg-4">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
 
-                <div class="d-flex justify-content-center justify-content-lg-end align-items-center gap-3">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainMenu">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="/home/">
+                            <i class="fa fa-home"></i> Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="/product/">
+                            <i class="fa fa-box"></i> Products
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="/about/">
+                            About
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="/contact/">
+                            Contact
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="/faqs/">
+                            FAQs
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#">
+                            Blogs
+                        </a>
+                    </li>
 
                     {% if request.session.user %}
 
-                    <a href="/profile/" class="text-dark text-decoration-none">
+                    <li class="nav-item">
 
-                        <img src="../{{request.session.userpic}}"
-                             class="rounded-circle border"
-                             width="42"
-                             height="42">
+                        <a class="nav-link px-3" href="/history/">
 
-                        <span class="ms-2 fw-semibold">
-                            {{request.session.username}}
-                        </span>
+                            Orders
 
-                    </a>
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link px-3" href="/logout/">
+
+                            Logout
+
+                        </a>
+
+                    </li>
 
                     {% else %}
 
-                    <a href="/login/" class="btn btn-outline-dark">
+                    <li class="nav-item">
 
-                        <i class="fa-solid fa-user"></i>
+                        <a class="nav-link px-3" href="/register/">
 
-                        Login
+                            Register
 
-                    </a>
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link px-3" href="/login/">
+
+                            Login
+
+                        </a>
+
+                    </li>
 
                     {% endif %}
 
-                    <a href="/cartitem/" class="btn btn-warning position-relative">
-
-                        <i class="fa-solid fa-cart-shopping"></i>
-
-                        Cart
-
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-
-                            {% if request.session.user %}
-                            {{request.session.cartitems}}
-                            {% else %}
-                            0
-                            {% endif %}
-
-                        </span>
-
-                    </a>
-
-                </div>
+                </ul>
 
             </div>
 
         </div>
 
+    </nav>
+    <div class="row">
+        <div class="col-sm-12 childpage" style="min-height:500px;">
+            {% block childpage %}
+            {% endblock %}
+        </div>
     </div>
+    <!--startfooter-->
 
-</div>
+    <div class="row ufooter mt-3">
 
-<!-- ================= NAVBAR ================= -->
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="row u1 py-4 border-bottom border-light text-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+                <div class="col-sm-6 ">
+                    <h3 class="fw-bold mb-2">
+                        Join Our Newsletter
+                    </h3>
 
-    <div class="container">
+                    <p class="text-light">
+                        Get exclusive offers, latest arrivals and special discounts directly in your inbox.
+                    </p><br />
+                    <span class="white orange">Subscribe to our Shopping platform and get 20% off on your first
+                        purchase</span>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5 pt-3">
+                    <div class="input-group   rounded text-center">
+                        <input type="text" placeholder="Please enter your email here....."
+                            class="form-control text-center " />
+                        <button class="input-group-text text-bg-dark ">Subscribe</button>
+                    </div>
 
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainMenu">
+                </div>
 
-            <span class="navbar-toggler-icon"></span>
+            </div>
+            <div class="row u2 text-light">
+                <div class="col-sm-3  pt-4">
+                    <span class="fs-3 fw-bold">
+                        Fashion <span class="text-warning">MART</span>
+                    </span>
 
-        </button>
+                    <p class="text-secondary mt-3">
+                        Your trusted destination for premium fashion with the latest trends at the best prices.
+                    </p>
+                    <br /><span class="orange">---------------------------</span><br />
 
-        <div class="collapse navbar-collapse" id="mainMenu">
+                    <img src="{% static 'images/ufooter/paypal.png' %}" style="height:40px;" class="img-fluid mt-2" />
 
-            <ul class="navbar-nav mx-auto">
 
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="/home/">
-                        <i class="fa fa-home"></i> Home
-                    </a>
-                </li>
+                </div>
+                <div class="col-sm-3 ps-5  py-4">
+                    <!-- footer first column link-->
+                    <div class="row ">
+                        <div class="col-sm-12">
+                            <b class="fs-5">Useful Links</b>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-sm-12">
+                            <a href="#">About</a>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <a href="#">Blogs</a>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <a href="#">Contact</a>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <a href="#">Offer's</a>
+                        </div>
+                    </div>
+                    <div class="row  mt-2">
+                        <div class="col-sm-12">
+                            <a href="#">Affiliate Program's</a>
+                        </div>
+                    </div>
+                    <!--footer one column link-->
+                </div>
+                <div class="col-sm-3  ps-5  py-4">
+                    <!-- footer second column links-->
+                    <div class="row ">
+                        <div class="col-sm-12 ">
+                            <b class="fs-5">My Account</b>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-sm-12">
+                            <a href="#">Sign In</a>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <a href="#">View Cart</a>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <a href="#">Track my Order</a>
+                        </div>
+                    </div>
 
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="/product/">
-                        <i class="fa fa-box"></i> Products
-                    </a>
-                </li>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <a href="#">Privacy Policy</a>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <a href="#">FAQ's</a>
+                        </div>
+                    </div>
+                    <!-- footer second column links end-->
+                </div>
+                <div class="col-sm-3  py-4"><!--start address-->
+                    <div class="row ">
+                        <div class="col-sm-12 pb-2">
+                            <b class="fs-5 ">Registered Address</b>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-sm-12 "><i class="fa-solid fa-house icon"></i>
+                            <span class="white ps-2">Munsipulia, Lucknow
+                                Uttar Pradesh </span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12 ">
+                            <i class="fa-solid fa-phone icon"></i> <span class="white">+91 8952369874</span>
+                        </div>
+                    </div>
 
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="/about/">
-                        About
-                    </a>
-                </li>
+                    <div class="row mt-2">
+                        <div class="col-sm-12 ">
+                            <i class="fa-solid fa-envelope icon"></i> <span class="white">abc123@gmail.com</span>
+                        </div>
+                    </div>
 
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="/contact/">
-                        Contact
-                    </a>
-                </li>
+                </div>
+            </div>
 
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="/faqs/">
-                        FAQs
-                    </a>
-                </li>
+            <div class="row u3 p-2">
+                <div class="col-sm-3 text-center mx-auto py-1 mb-2 text-light ">
+                    <i class="fab fa-facebook-f me-2 fico p-1 border border-light rounded"></i>
+                    <i class="fab fa-twitter me-2 p-1 fico  border border-light rounded"></i>
+                    <i class="fab fa-instagram me-2  fico p-1 border border-light rounded"></i>
+                    <i class="fab fa-youtube me-2  p-1 fico border border-light rounded"></i>
+                </div>
 
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="#">
-                        Blogs
-                    </a>
-                </li>
-
-                {% if request.session.user %}
-
-                <li class="nav-item">
-
-                    <a class="nav-link px-3" href="/history/">
-
-                        Orders
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a class="nav-link px-3" href="/logout/">
-
-                        Logout
-
-                    </a>
-
-                </li>
-
-                {% else %}
-
-                <li class="nav-item">
-
-                    <a class="nav-link px-3" href="/register/">
-
-                        Register
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a class="nav-link px-3" href="/login/">
-
-                        Login
-
-                    </a>
-
-                </li>
-
-                {% endif %}
-
-            </ul>
+            </div>
 
         </div>
+        <div class="col-sm-2"></div>
 
+
+
+
+
+        <!--end footer-->
     </div>
+    <div class="row bfooter py-3">`
+            <!-- <div class="col-sm-6 text-light text-center">
+                <a href="/portfolio/">
+                    shayra
+                </a>
+            </div> -->
 
-</nav>
-        <div class="row">
-            <div class="col-sm-12 childpage" style="min-height:500px;">
-                {% block childpage %}
-                {% endblock %}
+            <div class="text-center text-light py-3 border-top border-secondary">
+                © 2026 FashionMART | Designed & Developed by <b>Shayra</b>
             </div>
-        </div>
-        <!--startfooter-->
-
-        <div class="row ufooter mt-3">
-
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <div class="row u1 py-4 border-bottom border-light text-light">
-
-                    <div class="col-sm-6 ">
-                        <b class=" fs-4 ">Subscribe To Our Platform <i class="fa-solid fa-gift brand "></i></b><br />
-                        <span class="white orange">Subscribe to our Shopping platform and get 20% off on your first
-                            purchase</span>
-                    </div>
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-5 pt-3">
-                        <div class="input-group   rounded text-center">
-                            <input type="text" placeholder="Please enter your email here....."
-                                class="form-control text-center " />
-                            <button class="input-group-text text-bg-dark ">Subscribe</button>
-                        </div>
-
-                    </div>
-
-
-
-
-                </div>
-                <div class="row u2 text-light">
-                    <div class="col-sm-3  pt-4">
-                        <span class="fs-4"> <i style="font-family:Forte;">Fashion</i><b class="txt-colororange">MART <i
-                                    class="fa-solid fa-bag-shopping brand "></i></b> </span>
-                        <br /><span class="orange">---------------------------</span><br />
-
-                        <img src="{% static 'images/ufooter/paypal.png' %}" style="height:40px;"
-                            class="img-fluid mt-2" />
-
-
-                    </div>
-                    <div class="col-sm-3 ps-5  py-4">
-                        <!-- footer first column link-->
-                        <div class="row ">
-                            <div class="col-sm-12">
-                                <b class="fs-5">Useful Links</b>
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="col-sm-12">
-                                <a href="#">About</a>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-12">
-                                <a href="#">Blogs</a>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-12">
-                                <a href="#">Contact</a>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-12">
-                                <a href="#">Offer's</a>
-                            </div>
-                        </div>
-                        <div class="row  mt-2">
-                            <div class="col-sm-12">
-                                <a href="#">Affiliate Program's</a>
-                            </div>
-                        </div>
-                        <!--footer one column link-->
-                    </div>
-                    <div class="col-sm-3  ps-5  py-4">
-                        <!-- footer second column links-->
-                        <div class="row ">
-                            <div class="col-sm-12 ">
-                                <b class="fs-5">My Account</b>
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="col-sm-12">
-                                <a href="#">Sign In</a>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-12">
-                                <a href="#">View Cart</a>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-12">
-                                <a href="#">Track my Order</a>
-                            </div>
-                        </div>
-
-                        <div class="row mt-2">
-                            <div class="col-sm-12">
-                                <a href="#">Privacy Policy</a>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-12">
-                                <a href="#">FAQ's</a>
-                            </div>
-                        </div>
-                        <!-- footer second column links end-->
-                    </div>
-                    <div class="col-sm-3  py-4"><!--start address-->
-                        <div class="row ">
-                            <div class="col-sm-12 pb-2">
-                                <b class="fs-5 ">Registered Address</b>
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="col-sm-12 "><i class="fa-solid fa-house icon"></i>
-                                <span class="white ps-2">Munsipulia, Lucknow
-                                    Uttar Pradesh </span>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-sm-12 ">
-                                <i class="fa-solid fa-phone icon"></i> <span class="white">+91 8952369874</span>
-                            </div>
-                        </div>
-
-                        <div class="row mt-2">
-                            <div class="col-sm-12 ">
-                                <i class="fa-solid fa-envelope icon"></i> <span class="white">abc123@gmail.com</span>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-
-
-
-
-                <div class="row u3 p-2">
-                    <div class="col-sm-3 text-center mx-auto py-1 mb-2 text-light ">
-                        <i class="fab fa-facebook-f me-2 fico p-1 border border-light rounded"></i>
-                        <i class="fab fa-twitter me-2 p-1 fico  border border-light rounded"></i>
-                        <i class="fab fa-instagram me-2  fico p-1 border border-light rounded"></i>
-                        <i class="fab fa-youtube me-2  p-1 fico border border-light rounded"></i>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="col-sm-2"></div>
-
-
-
-
-
-            <!--end footer-->
-        </div>
-        <div class="row bfooter py-3">
-            <div class="row">
-                <div class="col-sm-6 text-light">
-                    <a href="/portfolio/">
-                        Developed By : shayra@gmail.com
-                    </a>
-                </div>
-
-                <div class="col-sm-6 text-light">
-                    <a href="https://www.techpile.in"> &copy Copyright To : dummy text</a>
-                </div>
-            </div>
-        </div>
+       
+    </div>
 
 
     </div>
